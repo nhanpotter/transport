@@ -4,6 +4,7 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
+	"log"
 	"math/rand"
 	"net"
 	"strconv"
@@ -571,6 +572,7 @@ func (n *Net) ListenPacket(network string, address string) (net.PacketConn, erro
 
 // ListenUDP acts like ListenPacket for UDP networks.
 func (n *Net) ListenUDP(network string, locAddr *net.UDPAddr) (UDPPacketConn, error) {
+	log.Printf("ListenUDP locAddr(%s)", locAddr.String())
 	if n.v == nil {
 		return net.ListenUDP(network, locAddr)
 	}
